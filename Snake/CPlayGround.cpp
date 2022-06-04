@@ -1,9 +1,12 @@
 #include "CPlayGround.h"
 #include "Cell.h"
 
+#include <iostream>
+
 CPlayGround::CPlayGround()
 {
-	
+	srand(time(0));
+
 }
 
 CPlayGround::~CPlayGround()
@@ -23,6 +26,20 @@ void CPlayGround::putSnakeOnPG()
 
 void CPlayGround::putFruitOnPG()
 {
+	int fruitX = rand() % (snakePGSize::WIDTH - 1);
+	int fruitY = rand() % (snakePGSize::HEIGHT - 1);
+
+	while (m_playGround[fruitX][fruitY] != 0) {
+		fruitX = rand() % (snakePGSize::WIDTH - 1);
+		fruitY = rand() % (snakePGSize::HEIGHT - 1);
+	}
+
+	std::cout << fruitX << std::endl;
+	std::cout << fruitY << std::endl;
+
+	m_playGround[fruitX][fruitY] = 2;
+	fruitPos.x = fruitX;
+	fruitPos.y = fruitY;
 
 }
 

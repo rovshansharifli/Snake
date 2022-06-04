@@ -22,5 +22,7 @@ private:
 	int m_playGround[snakePGSize::WIDTH][snakePGSize::HEIGHT] = { 0 };
 	CSnake m_Snake;
 
+	Cell fruitPos;
+
 };
 

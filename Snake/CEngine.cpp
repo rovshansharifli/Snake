@@ -18,11 +18,14 @@ void CEngine::start()
 	
 	CPlayGround myPG;
 
+	//initialize snake and fruit positions
+	myPG.putSnakeOnPG();
+	myPG.putFruitOnPG();
+
 	while (window.isOpen()) {
 		checkEvent(window);
 
 		window.clear(sf::Color::White);
-		myPG.putSnakeOnPG();
 
 		myPG.putAllOnScreen(window, m_snakeSprite, m_fruitSprite);
 
