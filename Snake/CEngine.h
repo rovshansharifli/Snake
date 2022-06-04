@@ -1,7 +1,5 @@
 #pragma once
 #include <SFML/Graphics.hpp>
-#include "Params.h"
-#include "CPlayGround.h"
 
 class CEngine
 {

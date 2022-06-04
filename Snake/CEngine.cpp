@@ -1,5 +1,6 @@
 #include "CEngine.h"
 #include "Params.h"
+#include "CPlayGround.h"
 
 CEngine::CEngine()
 {
@@ -13,7 +14,7 @@ CEngine::~CEngine()
 
 void CEngine::start()
 {
-	sf::RenderWindow window(sf::VideoMode(snakeWinSize::WIDTH, snakeWinSize::HEIGHT), "Snake game");
+	sf::RenderWindow window(sf::VideoMode(snakePGSize::WIDTH * 18, snakePGSize::HEIGHT * 18), "Snake game");
 	setTexture();
 	
 	CPlayGround myPG;

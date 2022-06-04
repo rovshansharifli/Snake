@@ -11,7 +11,7 @@ public:
 	std::vector<Cell>* getSnake();
 
 private:
-
 	std::vector<Cell> mySnakeVector;
+
 };
 
