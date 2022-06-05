@@ -4,8 +4,13 @@
 
 CEngine::CEngine()
 {
+	//set textures
 	m_texture.loadFromFile("images/tiles.png");
+	m_snakeSprite.setTexture(m_texture);
+	m_fruitSprite.setTexture(m_texture);
 
+	m_snakeSprite.setTextureRect(sf::IntRect(0, 0, 18, 18));
+	m_fruitSprite.setTextureRect(sf::IntRect(18, 0, 18, 18));
 }
 
 CEngine::~CEngine()
@@ -15,8 +20,9 @@ CEngine::~CEngine()
 void CEngine::start()
 {
 	sf::RenderWindow window(sf::VideoMode(snakePGSize::WIDTH * 18, snakePGSize::HEIGHT * 18), "Snake game");
-	setTexture();
 	
+	sf::Clock clock;
+
 	CPlayGround myPG;
 
 	//initialize snake and fruit positions
@@ -24,7 +30,19 @@ void CEngine::start()
 	myPG.putFruitOnPG();
 
 	while (window.isOpen()) {
+		float time = clock.getElapsedTime().asSeconds();
+		clock.restart();
+		timer += time;
+
 		checkEvent(window);
+
+		if (timer > delay) {
+			//slide the piece here
+			myPG.slideSnake();
+			myPG.putSnakeOnPG();
+
+			timer = 0;
+		}
 
 		window.clear(sf::Color::White);
 
@@ -45,11 +63,3 @@ void CEngine::checkEvent(sf::RenderWindow& t_window)
 	}
 }
 
-void CEngine::setTexture()
-{
-	m_snakeSprite.setTexture(m_texture);
-	m_fruitSprite.setTexture(m_texture);
-
-	m_snakeSprite.setTextureRect(sf::IntRect(0, 0, 18, 18));
-	m_fruitSprite.setTextureRect(sf::IntRect(18, 0, 18, 18));
-}

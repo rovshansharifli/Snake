@@ -10,8 +10,12 @@ public:
 
 	std::vector<Cell>* getSnake();
 
+	void setDirection(int t_direction);
+	int getDirection();
+
 private:
 	std::vector<Cell> mySnakeVector;
-
+	// direction - 0 up; 1 right; 2 down; 3 left
+	int m_direction = 1;
 };
 

@@ -18,4 +18,14 @@ std::vector<Cell>* CSnake::getSnake()
 	return &mySnakeVector;
 }
 
+void CSnake::setDirection(int t_direction)
+{
+	m_direction = t_direction;
+}
+
+int CSnake::getDirection()
+{
+	return m_direction;
+}
+
 

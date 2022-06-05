@@ -38,6 +38,18 @@ void CPlayGround::putFruitOnPG()
 	fruitPos.y = fruitY;
 }
 
+void CPlayGround::slideSnake()
+{
+	std::vector<Cell>* snakeCells = m_Snake.getSnake();
+
+	for (auto it = snakeCells->begin(); it != snakeCells->end(); it++)
+	{
+		m_playGround[it->x][it->y] = 0;
+		it->x = it->x + 1;
+		m_playGround[it->x][it->y] = 1;
+	}
+}
+
 void CPlayGround::putAllOnScreen(sf::RenderWindow& t_window, sf::Sprite& t_snakeSprite, sf::Sprite& t_fruitSprite)
 {
 	for (int i = 0; i < snakePGSize::WIDTH; i++) {
