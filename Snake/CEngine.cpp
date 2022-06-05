@@ -28,7 +28,7 @@ void CEngine::start()
 	myPG.putSnakeOnPG();
 	myPG.putFruitOnPG();
 
-	while (window.isOpen()) {
+	while ((window.isOpen()) && (!gameOver)) {
 		float time = clock.getElapsedTime().asSeconds();
 		clock.restart();
 		timer += time;
@@ -37,7 +37,10 @@ void CEngine::start()
 
 		if (timer > delay) {
 			//slide the piece here
-			myPG.slideSnake();
+			if (!myPG.slideSnake()) {
+				gameOver = true;
+			}
+			
 			myPG.putSnakeOnPG();
 
 			timer = 0;
@@ -59,8 +62,8 @@ void CEngine::checkEvent(sf::RenderWindow& t_window, CPlayGround& t_pg)
 		if (myEvent.type == sf::Event::Closed) {
 			t_window.close();
 		}
-		// direction - 0 up; 1 right; 2 down; 3 left
 
+		// direction - 0 up; 1 right; 2 down; 3 left
 		if (myEvent.key.code == sf::Keyboard::Up) {
 			t_pg.setSnakeDirection(0);
 		}

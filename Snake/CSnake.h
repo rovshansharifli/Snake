@@ -13,7 +13,9 @@ public:
 	void setDirection(int t_direction);
 	int getDirection();
 
-	void slideSnake();
+	void slideSnake(Cell t_newHead);
+	Cell getNewSnakeHead();
+	void growSnake(Cell t_newBody);
 
 private:
 	std::vector<Cell> mySnakeVector;

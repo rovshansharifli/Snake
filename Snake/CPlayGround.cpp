@@ -1,6 +1,5 @@
 #include "CPlayGround.h"
 #include "Cell.h"
-#include <iostream>
 
 CPlayGround::CPlayGround()
 {
@@ -39,19 +38,38 @@ void CPlayGround::putFruitOnPG()
 	fruitPos.y = fruitY;
 }
 
-void CPlayGround::slideSnake()
+bool CPlayGround::slideSnake()
 {
+	Cell newHead = m_Snake.getNewSnakeHead();
+
+	if (m_playGround[newHead.x][newHead.y] == 1) {
+		return false;
+	}
+	else if (m_playGround[newHead.x][newHead.y] == 2) {
+		m_Snake.growSnake(newHead);
+	}
+
 	std::vector<Cell>* snakeCells = m_Snake.getSnake();
 	for (auto it = snakeCells->begin(); it != snakeCells->end(); it++)
 	{
 		m_playGround[it->x][it->y] = 0;
 	}
-	m_Snake.slideSnake();
+
+	m_Snake.slideSnake(newHead);
+
+
+	return true;
 }
 
 void CPlayGround::setSnakeDirection(int t_direction)
 {
 	m_Snake.setDirection(t_direction);
+}
+
+int CPlayGround::checkCollision()
+{
+
+	return 0;
 }
 
 void CPlayGround::putAllOnScreen(sf::RenderWindow& t_window, sf::Sprite& t_snakeSprite, sf::Sprite& t_fruitSprite)

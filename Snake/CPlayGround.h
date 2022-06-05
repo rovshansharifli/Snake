@@ -13,8 +13,10 @@ public:
 	void putFruitOnPG();
 
 	//sliding the snake
-	void slideSnake();
+	bool slideSnake();
 	void setSnakeDirection(int t_direction);
+
+	int checkCollision();
 
 	//putting all everything on the screen
 	void putAllOnScreen(sf::RenderWindow& t_window, sf::Sprite& t_snakeSprite, sf::Sprite& t_fruitSprite);

@@ -22,5 +22,8 @@ private:
 	float timer = 0;
 	float delay = 0.3;
 
+	//game finished
+	bool gameOver = false;
+
 };
 
