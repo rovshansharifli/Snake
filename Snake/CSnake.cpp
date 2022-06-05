@@ -4,23 +4,23 @@
 CSnake::CSnake()
 {
 	Cell head;
-	head.x = 9;
-	head.y = 9;
+	head.x = snakePGSize::WIDTH / 2;
+	head.y = snakePGSize::HEIGHT / 2;
 
 	mySnakeVector.push_back(head);
 
-	head.x = 8;
-	head.y = 9;
+	head.x = head.x - 1;
+	head.y = head.y;
 
 	mySnakeVector.push_back(head);
 
-	head.x = 7;
-	head.y = 9;
+	head.x = head.x - 1;
+	head.y = head.y;
 
 	mySnakeVector.push_back(head);
 
-	head.x = 6;
-	head.y = 9;
+	head.x = head.x - 1;
+	head.y = head.y;
 
 	mySnakeVector.push_back(head);
 }
@@ -71,9 +71,6 @@ void CSnake::setDirection(int t_direction)
 		}
 		break;
 	}
-
-	
-	
 }
 
 int CSnake::getDirection()

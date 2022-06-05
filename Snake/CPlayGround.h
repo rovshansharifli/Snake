@@ -16,10 +16,12 @@ public:
 	bool slideSnake();
 	void setSnakeDirection(int t_direction);
 
-	int checkCollision();
+	void generateFruit();
 
 	//putting all everything on the screen
 	void putAllOnScreen(sf::RenderWindow& t_window, sf::Sprite& t_snakeSprite, sf::Sprite& t_fruitSprite);
+
+	int getSnakeLength();
 
 private:
 	// 0 is empty space

@@ -1,6 +1,8 @@
 #include "CEngine.h"
 #include "Params.h"
 
+#include <iostream>
+
 CEngine::CEngine()
 {
 	//set textures
@@ -39,6 +41,7 @@ void CEngine::start()
 			//slide the piece here
 			if (!myPG.slideSnake()) {
 				gameOver = true;
+				std::cout << myPG.getSnakeLength()-4 << std::endl;
 			}
 			
 			myPG.putSnakeOnPG();

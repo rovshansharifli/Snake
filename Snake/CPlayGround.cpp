@@ -47,6 +47,7 @@ bool CPlayGround::slideSnake()
 	}
 	else if (m_playGround[newHead.x][newHead.y] == 2) {
 		m_Snake.growSnake(newHead);
+		putFruitOnPG();
 	}
 
 	std::vector<Cell>* snakeCells = m_Snake.getSnake();
@@ -57,7 +58,6 @@ bool CPlayGround::slideSnake()
 
 	m_Snake.slideSnake(newHead);
 
-
 	return true;
 }
 
@@ -66,10 +66,9 @@ void CPlayGround::setSnakeDirection(int t_direction)
 	m_Snake.setDirection(t_direction);
 }
 
-int CPlayGround::checkCollision()
+void CPlayGround::generateFruit()
 {
 
-	return 0;
 }
 
 void CPlayGround::putAllOnScreen(sf::RenderWindow& t_window, sf::Sprite& t_snakeSprite, sf::Sprite& t_fruitSprite)
@@ -89,6 +88,11 @@ void CPlayGround::putAllOnScreen(sf::RenderWindow& t_window, sf::Sprite& t_snake
 			}
 		}
 	}
+}
+
+int CPlayGround::getSnakeLength()
+{
+	return m_Snake.getSnake()->size();
 }
 
 
