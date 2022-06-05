@@ -1,5 +1,6 @@
 #pragma once
 #include <SFML/Graphics.hpp>
+#include "CPlayGround.h"
 
 class CEngine
 {
@@ -10,7 +11,7 @@ public:
 	void start();
 
 private:
-	void checkEvent(sf::RenderWindow& t_window);
+	void checkEvent(sf::RenderWindow& t_window, CPlayGround &t_pg);
 
 	//texture things
 	sf::Texture m_texture;

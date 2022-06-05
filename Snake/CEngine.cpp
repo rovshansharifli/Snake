@@ -1,6 +1,5 @@
 #include "CEngine.h"
 #include "Params.h"
-#include "CPlayGround.h"
 
 CEngine::CEngine()
 {
@@ -34,7 +33,7 @@ void CEngine::start()
 		clock.restart();
 		timer += time;
 
-		checkEvent(window);
+		checkEvent(window, myPG);
 
 		if (timer > delay) {
 			//slide the piece here
@@ -52,13 +51,30 @@ void CEngine::start()
 	}
 }
 
-void CEngine::checkEvent(sf::RenderWindow& t_window)
+void CEngine::checkEvent(sf::RenderWindow& t_window, CPlayGround& t_pg)
 {
 	sf::Event myEvent;
 
 	while (t_window.pollEvent(myEvent)) {
 		if (myEvent.type == sf::Event::Closed) {
 			t_window.close();
+		}
+		// direction - 0 up; 1 right; 2 down; 3 left
+
+		if (myEvent.key.code == sf::Keyboard::Up) {
+			t_pg.setSnakeDirection(0);
+		}
+
+		if (myEvent.key.code == sf::Keyboard::Left) {
+			t_pg.setSnakeDirection(3);
+		}
+
+		if (myEvent.key.code == sf::Keyboard::Right) {
+			t_pg.setSnakeDirection(1);
+		}
+
+		if (myEvent.key.code == sf::Keyboard::Down) {
+			t_pg.setSnakeDirection(2);
 		}
 	}
 }
